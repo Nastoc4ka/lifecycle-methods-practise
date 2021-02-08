@@ -8,22 +8,26 @@ class App extends Component {
     state = {
         rate: '',
         rateDifference: '',
-        loading: true
+        loading: true,
+        rateUpdateToggle: true
     };
 
     getRate = () => {
         console.log('getRate');
+        this.mounted = true;
         this.setState({
             loading: true,
         });
-        fetch('https://api.ifcityevent.com/currency')
-            .then(response => response.json())
-            .then(rateInfo => {
-                this.setState({
-                    rate: rateInfo,
-                    loading: false,
+        if (this.mounted) {
+            fetch('https://api.ifcityevent.com/currency')
+                .then(response => response.json())
+                .then(rateInfo => {
+                    this.setState({
+                        rate: rateInfo,
+                        loading: false,
+                    })
                 })
-            })
+        }
     };
 
     updateDifference = ({rateBuyDiff, rateSellDiff}) => {
@@ -35,7 +39,7 @@ class App extends Component {
     componentDidMount() {
         console.log(`componentDidMount rate: ${JSON.stringify(this.state.rate)}`);
         this.getRate();
-        // setInterval(() => this.getRate(), 3000000);
+        this.interval = setInterval(() => this.getRate(), 30000);
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -51,13 +55,19 @@ class App extends Component {
         }
     }
 
+    componentWillUnmount() {
+        this.mounted = false;
+        console.log(`componentWillUnmount(), interval is cleared`);
+        clearInterval(this.interval);
+    }
+
     render() {
-        console.log('render');
-        const {rate, loading, rateDifference} = this.state;
+        console.log('render()');
+        const {rate, loading, rateDifference, rateUpdateToggle} = this.state;
         return (
             <div className="App">
                 <button onClick={this.getRate}>Update UAH/USD rate</button>
-                {loading ? <Loading/> : <ShowRates rate={rate} rateDifference={rateDifference}/>}
+                {loading ? <Loading/> : rateUpdateToggle && <ShowRates rate={rate} rateDifference={rateDifference}/>}
             </div>
         )
     }
