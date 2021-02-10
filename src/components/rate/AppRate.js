@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import ShowRates from "./ShowRates";
-import Loading from "./Loading";
-import './App.css';
+import Loading from "../Loading";
+import '../../App.css';
 
-class App extends Component {
+class AppRate extends Component {
 
     state = {
         rate: '',
@@ -73,4 +73,4 @@ class App extends Component {
     }
 }
 
-export default App;
+export default AppRate;

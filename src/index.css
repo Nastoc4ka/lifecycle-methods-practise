@@ -1,5 +1,5 @@
 body {
-  margin: 0;
+    margin-top: 20px;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -10,4 +10,34 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.toggleApp, .contacts {
+    text-align: center;
+    display: block;
+}
+
+.contacts {
+    height: 250px;
+}
+
+ul {
+    list-style: none;
+}
+
+.contactInfo, .contactsList {
+    width: 400px;
+    float: left;
+}
+
+.female {
+    color: chocolate;
+}
+
+.male {
+    color: darkblue;
+}
+
+.active {
+    background-color: #61dafb;
 }

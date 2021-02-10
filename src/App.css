@@ -36,3 +36,15 @@
     transform: rotate(360deg);
   }
 }
+
+.increase {
+  color: greenyellow;
+}
+
+.decrease {
+  color: red;
+}
+
+.spinner {
+  color: #61dafb;
+}

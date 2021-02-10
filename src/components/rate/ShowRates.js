@@ -1,8 +1,6 @@
 import React from 'react';
 import ShowDifference from "./ShowDifference";
 
-// import { faCamera } from '@fortawesome/free-solid-svg-icons';
-
 function ShowRate({rate, rateDifference}) {
     console.log(`render ShowRate ${JSON.stringify(rate)} showRateDifference : ${JSON.stringify(rateDifference)}`);
     const {rateBuy, rateSell} = rate;
